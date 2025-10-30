@@ -10,10 +10,10 @@ console.log(Username);
 const UserName=prompt("What is your name ? ","Praneeth");
 console.log(`${UserName} gaaru ikkadiki vachi koorchondi`);
 
-let height=prompt("Mee height cheppagalaraa");
-let weight=prompt("Mee weight cheppagalaraa");
+let height=prompt("Mee height cheppagalaraa",162);
+let weight=prompt("Mee weight cheppagalaraa",66);
 let heightinMeters = height/100;
-let BMI= weight / heightinMeters **2;
+let BMI= (weight / heightinMeters **2).toFixed(2);
 
 console.log(`mee height emo ${height}`);
 console.log(`mee wieght emo ${weight}`);
