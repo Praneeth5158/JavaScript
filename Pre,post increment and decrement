@@ -1,0 +1,20 @@
+//++x	Pre-increment → first increase, then use
+//x++	Post-increment → first use, then increase
+//--x	Pre-decrement → first decrease, then use
+//x--	Post-decrement → first use, then decrease
+
+let num = 5;
+
+console.log("Initial value:", num); // 5
+
+console.log("Pre-Increment (++num):", ++num); // 6 (increased first)
+console.log("After Pre-Increment:", num); // 6
+
+console.log("Post-Increment (num++):", num++); // 6 (used first)
+console.log("After Post-Increment:", num); // 7
+
+console.log("Pre-Decrement (--num):", --num); // 6 (decreased first)
+console.log("After Pre-Decrement:", num); // 6
+
+console.log("Post-Decrement (num--):", num--); // 6 (used first)
+console.log("After Post-Decrement:", num); // 5
