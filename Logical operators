@@ -1,0 +1,18 @@
+//logical OR (||) = it will returns first truthy value 
+//logical AND (&&) = it will rethrns first falsy vaue
+//Nullish coelliance ( ??) = it will returns first defined value
+                             ( except undefined and null alla re defined values )
+
+
+
+// Logical OR (||) -> returns first truthy value
+let orResult = 0 || "Hello" || false;
+console.log("OR Result:", orResult); // Output: Hello
+
+// Logical AND (&&) -> returns first falsy value
+let andResult = 10 && 0 && "Hi";
+console.log("AND Result:", andResult); // Output: 0
+
+// Nullish Coalescing (??) -> returns first defined (not null or undefined) value
+let nullishResult = undefined ?? null ?? "JavaScript";
+console.log("Nullish Coalescing Result:", nullishResult); // Output: JavaScript
