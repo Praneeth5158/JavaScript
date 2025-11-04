@@ -1,0 +1,57 @@
+// 📘 Call by Value vs Call by Reference in JavaScript
+
+// ✅ Primitive types (Number, String, Boolean) are IMMUTABLE and use CALL BY VALUE
+let a = 10;          // 'a' holds the value 10
+let b = a;           // a's value (10) is copied to b
+b = 20;              // changing b will NOT affect a
+console.log("a =", a);  // Output: 10
+console.log("b =", b);  // Output: 20
+// 👉 Here only the value is copied, not the memory address.
+
+// ✅ Non-primitive types (Objects, Arrays) are MUTABLE and use CALL BY REFERENCE
+let student = {
+  name: "Suresh",
+  phone: 8399980,
+  address: "Palasa, Srikakulam"
+};
+
+let student2 = student; // Only the reference (memory address) is copied
+student2.name = "John Jigiri"; // Changing student2 also affects student
+
+console.log("student2.name =", student2.name); // Output: John Jigiri
+console.log("student.name =", student.name);   // Output: John Jigiri
+// 👉 Both point to the same memory location (reference is copied).
+
+// 🧠 Summary:
+// - Call by Value → Copy of data → Primitives (Number, String, Boolean)
+// - Call by Reference → Copy of address → Objects & Arrays
+// - Immutable = Cannot change value directly (e.g., strings, numbers)
+// - Mutable = Can change contents (e.g., objects, arrays)
+
+
+
+
+
+
+
+// 📘 Call by Value (Immutable Types)
+let x = 5;
+let y = x;
+y = 10;
+console.log(x === y); // false → because numbers are call by value (copied)
+console.log("x =", x, "y =", y); // x = 5, y = 10
+
+// 📘 Call by Reference (Mutable Types)
+let person = { name: "Suresh" };
+let person2 = person;
+person2.name = "John";
+console.log(person === person2); // true → both refer to same memory (reference copied)
+console.log("person.name =", person.name); // John
+
+// ✅ Type check examples
+console.log(typeof x);        // number → immutable
+console.log(typeof person);   // object → mutable
+
+// 🧠 Summary:
+// - Primitive types (Number, String, Boolean) → Call by Value → Immutable → false when compared after change
+// - Non-primitive types (Object, Array) → Call by Reference → Mutable → true when compared
