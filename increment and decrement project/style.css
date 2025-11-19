@@ -1,0 +1,21 @@
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    height:100vh;
+    gap:20px;
+}
+#number{
+    font-size: 50px;
+}
+button{
+    background-color:orange;
+    padding:14px;
+    border-radius: 20px;
+
+}
+button:hover{
+    cursor:pointer;
+    background-color: rgb(232, 171, 59);
+}
