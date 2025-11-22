@@ -15,12 +15,15 @@ h3{
     
 }
 button{
-    background-color:#08CB00;
+    background-color:red;
     padding:20px;
     border-radius:20px;
     font-weight:bold;
     color:white;
     cursor:pointer;
+}
+button:hover{
+    background-color:rgb(225, 33, 33);
 }
 .Box{
     background-color:gold;
@@ -35,6 +38,14 @@ button{
     align-items:center;
 }
 
+.winning-box{
+    background-color:#08CB00;
+    color:white;
+}
+
+.highlighted-box{
+    border:5px solid red;
+}
 .lottery-sheet-container{
     display:flex;
     flex-wrap: wrap;
