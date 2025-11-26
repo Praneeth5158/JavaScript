@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            background-color:rgb(231,233,233)
+        }
+        h1{
+            text-align:center;
+        }
+        .online-shopping-container{
+            max-width:800px;
+            background-color:white;
+            margin: 10px auto;
+            padding:10px;
+            border-radius:5px;
+            box-shadow:0 4px 8px black;
+        }
+        .product-row{
+            display:flex;
+            justify-content:space-between;
+            border:1px solid black;
+            padding:10px;
+            border-radius:5px;
+            align-items:center;
+            margin:10px 0;
+        }
+        button{
+            background-color:rgb(101,101,235);
+            border:none;
+            padding:10px 20px;
+            color:white;
+            cursor:pointer;
+        }
+        button:hover{
+            background-color:rgb(68,68,158);
+        }
+        h2{
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="online-shopping-container">
+        <h1>Online Shopping</h1>
+        <h2>Available Products</h2>
+        <div id="productsContainer">
+            <!-- <div class="product-row">
+                <p><strong>${product.name}</strong> - Rs.${product.price}</p>
+                <button>Add to Cart</button>
+            </div> -->
+        </div>
+        <h1>My Cart</h1>
+        <div id="cartContainer">
+            <div class="product-row">
+                <p><strong>${product.name}</strong> - Rs.${product.price}</p>
+                <button>Remove</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
