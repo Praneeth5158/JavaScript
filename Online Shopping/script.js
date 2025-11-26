@@ -1,4 +1,6 @@
 let productsContainer = document.getElementById("productsContainer");
+let cartContainer = document.getElementById("cartContainer");
+let feedbackElement = document.getElementById("feedback");
 let products=[
     {
         id:1,
@@ -26,7 +28,7 @@ let products=[
         price:500,
     },
 ]
-
+const cart=[];
 products.forEach(function(product){
     //    const productRow=`
     //    <div class="product-row">
@@ -44,7 +46,57 @@ products.forEach(function(product){
     productsContainer.appendChild(divElement);
 
 })
+function addToCart(id){
 
-function addToCart(value){
-    console.log("button clicking",value)
+    const isProductAvailable = cart.some(function(product){
+        return product.id === id;
+    })
+    if (isProductAvailable){
+        updateUserFeedback(` ⚠️ Item is already in the Cart`,"error");
+        // feedbackElement.textContent = `Item is already in the Cart`;
+        return ;
+    }
+    const productToAdd = products.find(function(product){
+        return product.id === id;
+    })
+    cart.push(productToAdd);
+    console.log(cart);
+    const {id: productId ,name, price}=productToAdd
+    const cartItemRow=`
+    <div class="product-row">
+         <p><strong>${name}</strong> - Rs.${price}</p>
+         <button onclick="removeFromCart(${id})">Remove</button>
+    </div>
+    `
+    cartContainer.insertAdjacentHTML("beforeend",cartItemRow);
+    // feedbackElement.textContent = `${name} is added to the cart`;
+    updateUserFeedback(`☑️ ${name} is added to the cart`,"success");
+}
+
+function removeFromCart(id){
+    console.log(id);
+    const updatedCart = cart.filter(function(product){
+        return product.id!==id;
+    })
+    console.log(updatedCart);
+}
+
+let timerId;
+function updateUserFeedback(msg,type){
+    clearTimeout(timerId);
+    feedbackElement.style.display = "block" ;
+    if(type==="success"){
+        feedbackElement.style.backgroundColor='green';
+        feedbackElement.style.color='white';
+
+    }
+    if(type==="error"){
+        feedbackElement.style.backgroundColor='red';
+    }
+    feedbackElement.textContent = msg;
+
+
+    timerId = setTimeout(function(){
+        feedbackElement.style.display = "none" ;
+    },3000)
 }

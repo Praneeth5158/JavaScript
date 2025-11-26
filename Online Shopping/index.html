@@ -45,11 +45,21 @@
         h2{
             margin:10px;
         }
+        #feedback{
+            position : fixed;
+            top:30px;
+            right:100px;
+            background-color:white;
+            padding:20px;
+            border-radius:10px;
+            display:none;
+        }
     </style>
 </head>
 <body>
     <div class="online-shopping-container">
         <h1>Online Shopping</h1>
+        <p id="feedback"></p>
         <h2>Available Products</h2>
         <div id="productsContainer">
             <!-- <div class="product-row">
@@ -57,12 +67,9 @@
                 <button>Add to Cart</button>
             </div> -->
         </div>
-        <h1>My Cart</h1>
+        <h2>My Cart</h1>
         <div id="cartContainer">
-            <div class="product-row">
-                <p><strong>${product.name}</strong> - Rs.${product.price}</p>
-                <button>Remove</button>
-            </div>
+            
         </div>
     </div>
     <script src="script.js"></script>
