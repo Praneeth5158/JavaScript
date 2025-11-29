@@ -1,6 +1,7 @@
 let productsContainer = document.getElementById("productsContainer");
 let cartContainer = document.getElementById("cartContainer");
 let feedbackElement = document.getElementById("feedback");
+let clearCartBtn = document.getElementById("clearcart");
 let products=[
     {
         id:1,
@@ -28,7 +29,7 @@ let products=[
         price:500,
     },
 ]
-const cart=[];
+let cart=[];
 products.forEach(function(product){
     //    const productRow=`
     //    <div class="product-row">
@@ -60,25 +61,41 @@ function addToCart(id){
         return product.id === id;
     })
     cart.push(productToAdd);
-    console.log(cart);
-    const {id: productId ,name, price}=productToAdd
-    const cartItemRow=`
-    <div class="product-row">
-         <p><strong>${name}</strong> - Rs.${price}</p>
-         <button onclick="removeFromCart(${id})">Remove</button>
-    </div>
-    `
-    cartContainer.insertAdjacentHTML("beforeend",cartItemRow);
+    renderCartDetails()
     // feedbackElement.textContent = `${name} is added to the cart`;
     updateUserFeedback(`☑️ ${name} is added to the cart`,"success");
 }
 
+function renderCartDetails(){
+    cartContainer.innerHTML = "";
+    cart.forEach(function(product){
+        const {id,name, price}=product;
+        const cartItemRow=`
+        <div class="product-row">
+            <p><strong>${name}</strong> - Rs.${price}</p>
+            <button onclick="removeFromCart(${id})">Remove</button>
+        </div>
+    `
+    cartContainer.insertAdjacentHTML("beforeend",cartItemRow);
+    })
+    let totalPrice = 0;
+   for (let i=0;i<cart.length;i++){
+    totalPrice = totalPrice + cart[i].price
+   }
+   document.getElementById('totalPrice').textContent = `Rs.${totalPrice}`;
+}
+
 function removeFromCart(id){
     console.log(id);
+    const product = cart.find((product)=>product.id===id);
     const updatedCart = cart.filter(function(product){
         return product.id!==id;
     })
     console.log(updatedCart);
+    cart = updatedCart;
+
+    updateUserFeedback(`${product.name} is removed from the cart`,"error")
+    renderCartDetails();
 }
 
 let timerId;
@@ -100,3 +117,10 @@ function updateUserFeedback(msg,type){
         feedbackElement.style.display = "none" ;
     },3000)
 }
+
+clearCartBtn.addEventListener("click",()=>{
+    console.log("Cleard");
+    cart = [];
+    renderCartDetails();
+    updateUserFeedback("Card is Cleared","success");
+})
