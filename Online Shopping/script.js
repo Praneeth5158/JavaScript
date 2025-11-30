@@ -2,6 +2,8 @@ let productsContainer = document.getElementById("productsContainer");
 let cartContainer = document.getElementById("cartContainer");
 let feedbackElement = document.getElementById("feedback");
 let clearCartBtn = document.getElementById("clearcart");
+let sortByPriceBtn = document.getElementById("sort");
+
 let products=[
     {
         id:1,
@@ -63,7 +65,7 @@ function addToCart(id){
     cart.push(productToAdd);
     renderCartDetails()
     // feedbackElement.textContent = `${name} is added to the cart`;
-    updateUserFeedback(`☑️ ${name} is added to the cart`,"success");
+    updateUserFeedback(`☑️ Item is added to the cart`,"success");
 }
 
 function renderCartDetails(){
@@ -123,4 +125,11 @@ clearCartBtn.addEventListener("click",()=>{
     cart = [];
     renderCartDetails();
     updateUserFeedback("Card is Cleared","success");
+})
+
+sortByPriceBtn.addEventListener("click",()=>{
+    cart.sort(function(item1,item2){
+        return item1.price-item2.price
+    })
+    renderCartDetails();
 })
